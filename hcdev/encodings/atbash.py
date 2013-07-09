@@ -1,6 +1,7 @@
 class HCPyEncoder:
-
-    print '''
+    
+    def description(self):
+        print '''
     Description :-
     ---------------
     The Atbash cipher is a very specific case of a Monoalphabetic substitution cipher where the letters of the alphabet are reversed. In otherwords, all As are replaced with Zs, all Bs are replaced with Ys, and so on. I have added support for encrypting digits and special characters too to make it stronger
@@ -21,5 +22,7 @@ class HCPyEncoder:
             index=self.alphabets.index(i)
             cipher=cipher+self.alphabets[abs(len(self.alphabets)-index-1)%len(self.alphabets)]    
         return cipher
+    def decode(self,ciphertext):
+        return self.encode(ciphertext)
 
 atbash = HCPyEncoder()
