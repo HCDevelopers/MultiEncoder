@@ -14,7 +14,7 @@ class HCPyEncoder:
     '''
     
     def __init__(self):
-        self.alphabets = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*()_+|:"<>-=[];,.?'                        
+        self.alphabets = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*()_+|:"<>-=[];,.?/`'                        
 
     def encode(self,plaintext):
         cipher=""        
