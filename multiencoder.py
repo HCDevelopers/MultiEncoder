@@ -19,27 +19,27 @@ from hcdev.encodings.reverse import reverse
 from hcdev.encodings.binary import binary
 from hcdev.encodings.morse import morse
 from hcdev.encodings.b64variant import *
-from hcdev.encodings.rot13 import rot13
+from hcdev.encodings.rot import *
 
 encrypters = {'gronsfeld' : gronsfeld(), 'shiftcipher': shiftcipher, 'vigenere' : vigenere(), 'xor' : xor}
 
-encoders = {'atbash' : atbash, 'psychosubcipher' : psychosub, 'hex' : hex,  'leet' : leet(), 
-    'reverse' : reverse(), 'rot13' : rot13(), 'binary' : binary, 
-    'morse' : morse, 'megan35': megan35, 'atom128' : atom128, 'zong22' : zong22, 
-    'base64' : base, 'hazz15' : hazz15}
+encoders = {'atbash' : atbash, 'psychosubcipher' : psychosub, 'hex' : hex,  'leet' : leet(),
+    'reverse' : reverse(), 'rot13' : rot13, 'binary' : binary,
+    'morse' : morse, 'megan35': megan35, 'atom128' : atom128, 'zong22' : zong22,
+    'base64' : base, 'hazz15' : hazz15, 'rot18' : rot18, 'rot47' : rot47, 'rot5' : rot5 }
 
-abbrevs = {'grons' : 'gronsfeld', 'shift' : 'shiftcipher', 'psycho' : 'psychosubcipher', 
-    'psy' : 'psychosubcipher', 'vig' : 'vigenere', 'rev' : 'reverse', 
-    'rot' : 'rot13', 'bin' : 'binary', 'megan' : 'megan35', 'atom' : 'atom128', 
+abbrevs = {'grons' : 'gronsfeld', 'shift' : 'shiftcipher', 'psycho' : 'psychosubcipher',
+    'psy' : 'psychosubcipher', 'vig' : 'vigenere', 'rev' : 'reverse',
+    'rot' : 'rot13', 'bin' : 'binary', 'megan' : 'megan35', 'atom' : 'atom128',
     'zong' : 'zong22', 'base' : 'base64', 'hazz' : 'hazz15'}
 
 title = '''
-.88b  d88. db    db db      d888888b d888888b d88888b d8b   db  .o88b.  .d88b.  d8888b. d88888b d8888b. 
-88'YbdP`88 88    88 88      `~~88~~'   `88'   88'     888o  88 d8P  Y8 .8P  Y8. 88  `8D 88'     88  `8D 
-88  88  88 88    88 88         88       88    88ooooo 88V8o 88 8P      88    88 88   88 88ooooo 88oobY' 
-88  88  88 88    88 88         88       88    88~~~~~ 88 V8o88 8b      88    88 88   88 88~~~~~ 88`8b   
-88  88  88 88b  d88 88booo.    88      .88.   88.     88  V888 Y8b  d8 `8b  d8' 88  .8D 88.     88 `88. 
-YP  YP  YP ~Y8888P' Y88888P    YP    Y888888P Y88888P VP   V8P  `Y88P'  `Y88P'  Y8888D' Y88888P 88   YD 
+.88b  d88. db    db db      d888888b d888888b d88888b d8b   db  .o88b.  .d88b.  d8888b. d88888b d8888b.
+88'YbdP`88 88    88 88      `~~88~~'   `88'   88'     888o  88 d8P  Y8 .8P  Y8. 88  `8D 88'     88  `8D
+88  88  88 88    88 88         88       88    88ooooo 88V8o 88 8P      88    88 88   88 88ooooo 88oobY'
+88  88  88 88    88 88         88       88    88~~~~~ 88 V8o88 8b      88    88 88   88 88~~~~~ 88`8b
+88  88  88 88b  d88 88booo.    88      .88.   88.     88  V888 Y8b  d8 `8b  d8' 88  .8D 88.     88 `88.
+YP  YP  YP ~Y8888P' Y88888P    YP    Y888888P Y88888P VP   V8P  `Y88P'  `Y88P'  Y8888D' Y88888P 88   YD
 
                         Version 0.2 at Hackcommunity.com
                     Authors: Ex094, noize, Psycho_Coder, Deque
@@ -48,9 +48,9 @@ YP  YP  YP ~Y8888P' Y88888P    YP    Y888888P Y88888P VP   V8P  `Y88P'  `Y88P'  
 def main():
 
     print title
-    print_algorithms()    
+    print_algorithms()
     algorithms = get_algorithms()
-    is_decode = True if raw_input("Encode (e) or decode (d)? ") == "d" else False 
+    is_decode = True if raw_input("Encode (e) or decode (d)? ") == "d" else False
     text = raw_input("Text: ")
     en_de_code(is_decode, text, algorithms)
 
@@ -81,12 +81,12 @@ def print_description(algorithm):
 
 def print_algorithms():
     print "Available encodings:",
-    for algo in encoders.keys(): 
+    for algo in encoders.keys():
         print algo,
         if hasattr(encoders[algo], "description"): print "(-i)",
     print
     print "Available encryptions:",
-    for algo in encrypters.keys(): 
+    for algo in encrypters.keys():
         print algo,
         if hasattr(encrypters[algo], "description"): print "(-i)",
     print
@@ -94,7 +94,7 @@ def print_algorithms():
 
 def en_de_code(is_decode, text, algorithms):
     print
-  #  try:    
+  #  try:
 
     for alg in algorithms:
             if alg in encoders:
@@ -110,11 +110,11 @@ def en_de_code(is_decode, text, algorithms):
     print
     print "Result:", text
 #    except:
- #       print "Unexpected error:", sys.exc_info()[0]  
+ #       print "Unexpected error:", sys.exc_info()[0]
 
 def ask_for_key(algorithm, gen):
     if hasattr(gen, "generateKey"):
-        print "Key for", algorithm, '(type "-gen" to generate):', 
+        print "Key for", algorithm, '(type "-gen" to generate):',
         key = raw_input()
         if key == "-gen":
             key = gen.generateKey()
