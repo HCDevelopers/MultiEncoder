@@ -1,5 +1,4 @@
 #Author: Psycho_Coder
-#
 
 import string,random
 
@@ -15,11 +14,11 @@ class HCPyEncoder:
 
     def encode(self,plaintext,key):
         cipher= self.XORencrypt(plaintext,key)      
-        return cipher
+        return repr(cipher)
     
     def decode(self,ciphertext,key):
         plain= self.XORencrypt(ciphertext,key)
-        return plain
+        return repr(plain)
 
     def generateKey(self,keyLen=10):
         pad = string.letters + string.digits
