@@ -41,7 +41,7 @@ title = '''
 88  88  88 88b  d88 88booo.    88      .88.   88.     88  V888 Y8b  d8 `8b  d8' 88  .8D 88.     88 `88.
 YP  YP  YP ~Y8888P' Y88888P    YP    Y888888P Y88888P VP   V8P  `Y88P'  `Y88P'  Y8888D' Y88888P 88   YD
 
-                        Version 0.2 at Hackcommunity.com
+                        Version 0.3 at Hackcommunity.com
                     Authors: Ex094, noize, Psycho_Coder, Deque
 '''
 
