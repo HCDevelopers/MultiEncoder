@@ -23,8 +23,8 @@ class HCPyEncoder:
         return repr(cipher)
     
     def decode(self, ciphertext, key):
-        plain = self.XORencrypt(ciphertext, key)
-        return repr(plain)
+        plain = self.XORencrypt(eval(ciphertext), key)
+        return plain
 
     @staticmethod
     def generateKey(keyLen=10):
