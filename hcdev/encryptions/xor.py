@@ -1,6 +1,6 @@
 #Author: Psycho_Coder
 
-from string import digits, letters
+from string import digits, ascii_letters
 from random import Random
 
 
@@ -28,7 +28,7 @@ class HCPyEncoder:
 
     @staticmethod
     def generateKey(keyLen=10):
-        pad = letters + digits
+        pad = ascii_letters + digits
         return ''.join(Random().sample(pad, keyLen))
 
 xor = HCPyEncoder()
