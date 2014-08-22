@@ -1,31 +1,21 @@
 class leet:
-    def encode(self,string):
-        alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9','|','<','>','G']
-        leet = ['4','8','<','>','3','f','9','h','1','j','k','|','m','n','0','p','q','r','5','7','v','v','w','x','y','2','o','i','z','e','a','s','G','t','b','g','l','c','d','6']
 
-        encoded = ""
+    def back(l,w):
+        return(replace(w,l))
 
-        for c in string:
-            for i in range(0,len(alphabet)):
-                if c == alphabet[i]:
-                    encoded = encoded + c.replace(alphabet[i],leet[i])
-                    continue
+    def encode(self,text):
+        string = text.lower()
+        string = string.replace("a","4").replace("b","8").replace("c","<").replace("e","3").replace("g","9").replace("h","|-|")
+        string = string.replace("i","1").replace("k","|<").replace("l","|").replace("m","|\/|").replace("n","|\|").replace("o","0").replace("0","o")
+        string = string.replace("q","0_").replace("s","5").replace("t","7").replace("u","|_|").replace("v","\/").replace("w","\/\/").replace("x","><").replace("z","2")
+        return(string)
 
-        return(encoded)
-
-    def decode(self,string):
-        alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9','|','<','>','G']
-        leet = ['4','8','<','>','3','f','9','h','1','j','k','|','m','n','0','p','q','r','5','7','v','v','w','x','y','2','o','i','z','e','a','s','G','t','b','g','l','c','d','6']
-        
-        decoded = ""
-
-        for c in string:
-            for i in range(0,len(alphabet)):
-                if c == leet[i]:
-                    decoded = decoded + c.replace(leet[i],alphabet[i])
-                    continue
-
-        return(decoded)
+    def decode(self,text):
+        string = text.lower()
+        string = string.replace("4","a").replace("8","b").replace("<","c").replace("3","e").replace("9","g").replace("|-|","h")
+        string = string.replace("1","i").replace("|<","k").replace("|\/|","m").replace("|\|","n").replace("|","l").replace("0","o").replace("o","0")
+        string = string.replace("0_","q").replace("5","s").replace("7","t").replace("|_|","u").replace("\/\/","w").replace("\/","v").replace("><","x").replace("2","z")
+        return(string)
 
     def description(self):
         return '''
