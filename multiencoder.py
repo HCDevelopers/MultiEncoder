@@ -1,16 +1,19 @@
-#!/usr/bin/env python 2.7
+#!/usr/bin/env python2.7
 #
-# Author: Deque
 # UI for the multi encoder
 #
+# Author: Deque
+# URL: https://github.com/HCDevelopers/MultiEncoder
+# For license information, see LICENSE
 
-import sys
-# encryptions
+
+# Encryptions
 from hcdev.encryptions.vigenere import vigenere
 from hcdev.encryptions.xor import xor
 from hcdev.encryptions.shiftcipher import shiftcipher
 from hcdev.encryptions.gronsfeld import gronsfeld
-# encodings
+
+# Encodings
 from hcdev.encodings.atbash import atbash
 from hcdev.encodings.psychosubcipher import psychosub
 from hcdev.encodings.hex import hex
@@ -21,17 +24,17 @@ from hcdev.encodings.morse import morse
 from hcdev.encodings.b64variant import *
 from hcdev.encodings.rot import *
 
-encrypters = {'gronsfeld' : gronsfeld(), 'shiftcipher': shiftcipher, 'vigenere' : vigenere(), 'xor' : xor}
+encrypters = { 'gronsfeld': gronsfeld(), 'shiftcipher': shiftcipher, 'vigenere': vigenere(), 'xor': xor }
 
-encoders = {'atbash' : atbash, 'psychosubcipher' : psychosub, 'hex' : hex,  'leet' : leet(),
-    'reverse' : reverse, 'rot13' : rot13, 'binary' : binary,
-    'morse' : morse, 'megan35': megan35, 'atom128' : atom128, 'zong22' : zong22,
-    'base64' : base, 'hazz15' : hazz15, 'rot18' : rot18, 'rot47' : rot47, 'rot5' : rot5 }
+encoders = { 'atbash': atbash, 'psychosubcipher': psychosub, 'hex': hex, 'leet': leet(),
+             'reverse': reverse, 'rot13': rot13, 'binary': binary,
+             'morse': morse, 'megan35': megan35, 'atom128': atom128, 'zong22': zong22,
+             'base64': base, 'hazz15': hazz15, 'rot18': rot18, 'rot47': rot47, 'rot5': rot5 }
 
-abbrevs = {'grons' : 'gronsfeld', 'shift' : 'shiftcipher', 'psycho' : 'psychosubcipher',
-    'psy' : 'psychosubcipher', 'vig' : 'vigenere', 'rev' : 'reverse',
-    'rot' : 'rot13', 'bin' : 'binary', 'megan' : 'megan35', 'atom' : 'atom128',
-    'zong' : 'zong22', 'base' : 'base64', 'hazz' : 'hazz15'}
+abbrevs = { 'grons': 'gronsfeld', 'shift': 'shiftcipher', 'psycho': 'psychosubcipher',
+            'psy': 'psychosubcipher', 'vig': 'vigenere', 'rev': 'reverse',
+            'rot': 'rot13', 'bin': 'binary', 'megan': 'megan35', 'atom': 'atom128',
+            'zong': 'zong22', 'base': 'base64', 'hazz': 'hazz15' }
 
 title = """
   __  __       _ _   _ ______                     _
@@ -46,25 +49,23 @@ title = """
             Authors: Ex094, noize, Psycho_Coder, Deque
 """
 
-def main():
-
-    print title
-    print_algorithms()
-    algorithms = get_algorithms()
-    is_decode = True if raw_input("Encode (e) or decode (d)? ") == "d" else False
-    text = raw_input("Text: ")
-    en_de_code(is_decode, text, algorithms)
 
 def get_algorithms():
-    while(True):
+
+    userargs = []
+    while True:
         userin = raw_input('Encodings/encryptions (type "-i name" to get a description): ')
         userargs = userin.split()
         if len(userargs) >= 2 and userargs[0] == "-i":
             print_description(userargs[1])
-        else: break
+        else:
+            break
     return clean_list(userargs)
 
+
 def print_description(algorithm):
+
+    enc = None
     list = clean_list([algorithm])
     if len(list) == 1:
         alg = list[0]
@@ -77,53 +78,55 @@ def print_description(algorithm):
             print "-----------------------------------------------------------"
             print enc.description()
             print "-----------------------------------------------------------"
-        else: print "No description available for", alg
-        print
+        else:
+            print "No description available for", alg
+        print("\n")
+
 
 def print_algorithms():
-    print "Available encodings:",
+    print "Available encodings:\n",
     for algo in encoders.keys():
         print algo,
-        if hasattr(encoders[algo], "description"): print "(-i)",
-    print
-    print "Available encryptions:",
+        if hasattr(encoders[algo], "description"):
+            print "(-i)",
+    print "\n\nAvailable encryptions:\n",
     for algo in encrypters.keys():
         print algo,
-        if hasattr(encrypters[algo], "description"): print "(-i)",
-    print
-    print
+        if hasattr(encrypters[algo], "description"):
+            print "(-i)",
+    print("\n")
+
 
 def en_de_code(is_decode, text, algorithms):
     print
-  #  try:
 
     for alg in algorithms:
-            if alg in encoders:
-                encoder = encoders[alg]
-                function = encoder.decode if is_decode else encoder.encode
-                text = function(text)
-            if alg in encrypters:
-                encrypter = encrypters[alg]
-                key = ask_for_key(alg, encrypter)
-                function = encrypter.decode if is_decode else encrypter.encode
-                text = function(text, key)
-            print '>', alg + ':', text
+        if alg in encoders:
+            encoder = encoders[alg]
+            function = encoder.decode if is_decode else encoder.encode
+            text = function(text)
+        if alg in encrypters:
+            encrypter = encrypters[alg]
+            key = ask_for_key(alg, encrypter)
+            function = encrypter.decode if is_decode else encrypter.encode
+            text = function(text, key)
+        print '>', alg + ':', text
     print
     print "Result:", text
-#    except:
- #       print "Unexpected error:", sys.exc_info()[0]
+
 
 def ask_for_key(algorithm, gen):
-    if hasattr(gen, "generateKey"):
+    if hasattr(gen, "generate_key"):
         print "Key for", algorithm, '(type "-gen" to generate):',
         key = raw_input()
         if key == "-gen":
-            key = gen.generateKey()
+            key = gen.generate_key()
             print "Generated key:", key
     else:
         print "Key for", algorithm + ':',
         key = raw_input()
     return key
+
 
 def clean_list(dirtylist):
     cleanlist = []
@@ -139,4 +142,14 @@ def clean_list(dirtylist):
             print "Couldn't find", element
     return cleanlist
 
-main()
+
+def main():
+    print title
+    print_algorithms()
+    algorithms = get_algorithms()
+    is_decode = True if raw_input("Encode (e) or decode (d)? ") == "d" else False
+    text = raw_input("Text: ")
+    en_de_code(is_decode, text, algorithms)
+
+if __name__ == "__main__":
+    main()
