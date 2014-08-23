@@ -1,5 +1,6 @@
 import base64
 
+
 class B64VariantEncoder:
 
     def __init__(self, translation):
