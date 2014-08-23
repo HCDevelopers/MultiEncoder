@@ -33,17 +33,18 @@ abbrevs = {'grons' : 'gronsfeld', 'shift' : 'shiftcipher', 'psycho' : 'psychosub
     'rot' : 'rot13', 'bin' : 'binary', 'megan' : 'megan35', 'atom' : 'atom128',
     'zong' : 'zong22', 'base' : 'base64', 'hazz' : 'hazz15'}
 
-title = '''
-.88b  d88. db    db db      d888888b d888888b d88888b d8b   db  .o88b.  .d88b.  d8888b. d88888b d8888b.
-88'YbdP`88 88    88 88      `~~88~~'   `88'   88'     888o  88 d8P  Y8 .8P  Y8. 88  `8D 88'     88  `8D
-88  88  88 88    88 88         88       88    88ooooo 88V8o 88 8P      88    88 88   88 88ooooo 88oobY'
-88  88  88 88    88 88         88       88    88~~~~~ 88 V8o88 8b      88    88 88   88 88~~~~~ 88`8b
-88  88  88 88b  d88 88booo.    88      .88.   88.     88  V888 Y8b  d8 `8b  d8' 88  .8D 88.     88 `88.
-YP  YP  YP ~Y8888P' Y88888P    YP    Y888888P Y88888P VP   V8P  `Y88P'  `Y88P'  Y8888D' Y88888P 88   YD
+title = """
+  __  __       _ _   _ ______                     _
+ |  \/  |     | | | (_)  ____|                   | |
+ | \  / |_   _| | |_ _| |__   _ __   ___ ___   __| | ___ _ __
+ | |\/| | | | | | __| |  __| | "_ \ / __/ _ \ / _` |/ _ \ "__|
+ | |  | | |_| | | |_| | |____| | | | (_| (_) | (_| |  __/ |
+ |_|  |_|\__,_|_|\__|_|______|_| |_|\___\___/ \__,_|\___|_|
 
-                        Version 0.3 at Hackcommunity.com
-                    Authors: Ex094, noize, Psycho_Coder, Deque
-'''
+
+                Version 0.4 at Hackcommunity.com
+            Authors: Ex094, noize, Psycho_Coder, Deque
+"""
 
 def main():
 
