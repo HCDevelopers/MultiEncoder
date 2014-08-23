@@ -24,7 +24,7 @@ from hcdev.encodings.rot import *
 encrypters = {'gronsfeld' : gronsfeld(), 'shiftcipher': shiftcipher, 'vigenere' : vigenere(), 'xor' : xor}
 
 encoders = {'atbash' : atbash, 'psychosubcipher' : psychosub, 'hex' : hex,  'leet' : leet(),
-    'reverse' : reverse(), 'rot13' : rot13, 'binary' : binary,
+    'reverse' : reverse, 'rot13' : rot13, 'binary' : binary,
     'morse' : morse, 'megan35': megan35, 'atom128' : atom128, 'zong22' : zong22,
     'base64' : base, 'hazz15' : hazz15, 'rot18' : rot18, 'rot47' : rot47, 'rot5' : rot5 }
 
