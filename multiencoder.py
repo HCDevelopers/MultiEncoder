@@ -9,6 +9,7 @@
 
 
 # Encryptions
+
 from hcdev.encryptions.vigenere import vigenere
 from hcdev.encryptions.xor import xor
 from hcdev.encryptions.shiftcipher import shiftcipher
@@ -24,6 +25,8 @@ from hcdev.encodings.binary import binary
 from hcdev.encodings.morse import morse
 from hcdev.encodings.b64variant import *
 from hcdev.encodings.rot import *
+from hcdev.encodings.zara128 import zara128
+
 
 encrypters = {
     'gronsfeld': gronsfeld(),
@@ -42,6 +45,7 @@ encoders = {
     'morse': morse,
     'megan35': megan35,
     'atom128': atom128,
+    'zara128': zara128,
     'zong22': zong22,
     'gila7': gila7,
     'tripo5': tripo5,
@@ -66,6 +70,7 @@ abbreviations = {
     'bin': 'binary',
     'megan': 'megan35',
     'atom': 'atom128',
+    'zara': 'zara128',
     'zong': 'zong22',
     'base': 'base64',
     'hazz': 'hazz15',
