@@ -42,12 +42,12 @@ setup(
     maintainer="Psycho_Coder",
     maintainer_email="psychocoder@outlook.com",
     classifiers=classifiers,
-    download_url='https://codeload.github.com/HCDevelopers/MultiEncoder/zip/master',
+    download_url="https://codeload.github.com/HCDevelopers/MultiEncoder/zip/master",
     keywords=[
-        'Python',
-        'Encoding Tool',
-        'Cryptography',
-        'String encodings',
-        'Chain encryptions'
+        "Python",
+        "Encoding Tool",
+        "Cryptography",
+        "String encodings",
+        "Chain encryptions"
     ]
 )
