@@ -1,3 +1,10 @@
+#!/usr/bin/env python2.7
+#
+# ZARA-128 Encoding Algorithm implementation.
+#
+# Author: Animesh Shaw
+
+
 class HCPyEncoder:
     __PAD = 0
 
@@ -20,8 +27,10 @@ class HCPyEncoder:
 
         return "".join(dectext)
 
-    def description(self):
-        print('''
+    @staticmethod
+    def description():
+
+        return '''
     Description :-
     ---------------
     ZARA-128 is a very simple example of String encoding where each character in the string is converted
@@ -30,7 +39,6 @@ class HCPyEncoder:
     Example:
     Plaintext  : Psycho_Coder
     Ciphertext: 392 427 433 411 416 423 407 379 423 412 413 426
-    ''')
-
+            '''
 
 zara128 = HCPyEncoder()
