@@ -9,7 +9,6 @@ Start Multiencoder via:
 
 Requirement: Python2.7
 
+To install the MultiEncoder Package type the following in the terminal :- 
 
-#### Note:
-
-**setup.py** hasn't yet been tested and its recommend nt to use it untill and unless this line that you're reading magically vasishes :P
+    python setup.py install
