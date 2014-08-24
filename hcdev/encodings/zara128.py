@@ -6,31 +6,18 @@
 
 
 class HCPyEncoder:
-    __PAD = 0
-
     def __init__(self):
         self.__PAD = 312
 
     def encode(self, plaintext):
-
-        enctext = []
-        for c in plaintext:
-            enctext.append(str(ord(c) + self.__PAD))
-
-        return " ".join(enctext)
+        return " ".join(str(ord(c) + self.__PAD) for c in plaintext)
 
     def decode(self, ciphertext):
-
-        dectext = []
-        for c in ciphertext.split():
-            dectext.append(chr(int(c) - self.__PAD))
-
-        return "".join(dectext)
+        return "".join(chr(int(c) - self.__PAD) for c in ciphertext.split())
 
     @staticmethod
     def description():
-
-        return '''
+        return """
     Description :-
     ---------------
     ZARA-128 is a very simple example of String encoding where each character in the string is converted
@@ -39,6 +26,7 @@ class HCPyEncoder:
     Example:
     Plaintext  : Psycho_Coder
     Ciphertext: 392 427 433 411 416 423 407 379 423 412 413 426
-            '''
+            """
+
 
 zara128 = HCPyEncoder()
