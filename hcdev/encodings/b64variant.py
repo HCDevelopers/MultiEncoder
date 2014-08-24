@@ -1,3 +1,4 @@
+# Authors: Deque, Ex094
 import base64
 
 
@@ -28,6 +29,11 @@ class B64VariantEncoder:
         result = base64.b64decode(b64)
         return result
 
+gila7 = B64VariantEncoder("7ZSTJK+W=cVtBCasyf0gzA8uvwDEq3XH/1RMNOILPQU4klm65YbdeFrx2hij9nopG")
+tripo5 = B64VariantEncoder("ghijopE+G78lmnIJQRXY=abcS/UVWdefABCs456tDqruvNOPwx2KLyz01M3Hk9ZFT")
+feron74 = B64VariantEncoder("75XYTabcS/UVWdefADqr6RuvN8PBCsQtwx2KLyz+OM3Hk9ghi01ZFlmnjopE=GIJ4")
+tigo3 = B64VariantEncoder("FrsxyzA8VtuvwDEqWZ/1+4klm67=cBCa5Ybdef0g2hij9nopMNO3GHIRSTJKLPQUX")
+esab46 = B64VariantEncoder("ABCDqrs456tuvNOPwxyz012KLM3789=+QRSTUVWXYZabcdefghijklmnopEFGHIJ/")
 atom128 = B64VariantEncoder("3GHIJKLMNOPQRSTUb=cdefghijklmnopWXYZ/12+406789VaqrstuvwxyzABCDEF5")
 megan35 = B64VariantEncoder("/128GhIoPQROSTeUbADfgHijKLM+n0pFWXY456xyzB7=39VaqrstJklmNuZvwcdEC")
 zong22 = B64VariantEncoder("ZKj9n+yf0wDVX1s/5YbdxSo=ILaUpPBCHg8uvNO4klm6iJGhQ7eFrWczAMEq3RTt2")
