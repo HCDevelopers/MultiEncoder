@@ -3,6 +3,7 @@
 # UI for the multi encoder
 #
 # Author: Deque
+# Co-author : Psycho_Coder
 # URL: https://github.com/HCDevelopers/MultiEncoder
 # For license information, see LICENSE
 
@@ -24,19 +25,56 @@ from hcdev.encodings.morse import morse
 from hcdev.encodings.b64variant import *
 from hcdev.encodings.rot import *
 
-encrypters = { 'gronsfeld': gronsfeld(), 'shiftcipher': shiftcipher, 'vigenere': vigenere(), 'xor': xor }
+encrypters = {
+    'gronsfeld': gronsfeld(),
+    'shiftcipher': shiftcipher,
+    'vigenere': vigenere(),
+    'xor': xor
+}
 
-encoders = { 'atbash': atbash, 'psychosubcipher': psychosub, 'hex': hex, 'leet': leet(),
-             'reverse': reverse, 'rot13': rot13, 'binary': binary,
-             'morse': morse, 'megan35': megan35, 'atom128': atom128, 'zong22': zong22, 'gila7': gila7,
-             'tripo5': tripo5, 'feron74': feron74, 'tigo3': tigo3, 'esab46': esab46,
-             'base64': base, 'hazz15': hazz15, 'rot18': rot18, 'rot47': rot47, 'rot5': rot5 }
+encoders = {
+    'atbash': atbash,
+    'psychosubcipher': psychosub,
+    'hex': hex, 'leet': leet(),
+    'reverse': reverse,
+    'rot13': rot13,
+    'binary': binary,
+    'morse': morse,
+    'megan35': megan35,
+    'atom128': atom128,
+    'zong22': zong22,
+    'gila7': gila7,
+    'tripo5': tripo5,
+    'feron74': feron74,
+    'tigo3': tigo3,
+    'esab46': esab46,
+    'base64': base,
+    'hazz15': hazz15,
+    'rot18': rot18,
+    'rot47': rot47,
+    'rot5': rot5
+}
 
-abbrevs = { 'grons': 'gronsfeld', 'shift': 'shiftcipher', 'psycho': 'psychosubcipher',
-            'psy': 'psychosubcipher', 'vig': 'vigenere', 'rev': 'reverse',
-            'rot': 'rot13', 'bin': 'binary', 'megan': 'megan35', 'atom': 'atom128',
-            'zong': 'zong22', 'base': 'base64', 'hazz': 'hazz15', 'gila': 'gila7', 'tripo': 'tripo5',
-            'feron': 'feron74', 'tigo': 'tigo3', 'esab': 'esab46'}
+abbreviations = {
+    'grons': 'gronsfeld',
+    'shift': 'shiftcipher',
+    'psycho': 'psychosubcipher',
+    'psy': 'psychosubcipher',
+    'vig': 'vigenere',
+    'rev': 'reverse',
+    'rot': 'rot13',
+    'bin': 'binary',
+    'megan': 'megan35',
+    'atom': 'atom128',
+    'zong': 'zong22',
+    'base': 'base64',
+    'hazz': 'hazz15',
+    'gila': 'gila7',
+    'tripo': 'tripo5',
+    'feron': 'feron74',
+    'tigo': 'tigo3',
+    'esab': 'esab46'
+}
 
 title = """
   __  __       _ _   _ ______                     _
@@ -134,8 +172,8 @@ def clean_list(dirtylist):
     cleanlist = []
     for element in dirtylist:
 
-        if element in abbrevs:
-            element = abbrevs[element]
+        if element in abbreviations:
+            element = abbreviations[element]
 
         if element in encoders or element in encrypters:
             cleanlist.append(element)
