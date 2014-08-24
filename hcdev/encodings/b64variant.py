@@ -1,32 +1,46 @@
 # Authors: Deque, Ex094
-import base64
+from base64 import b64encode, b64decode
 
 
 class B64VariantEncoder:
 
     def __init__(self, translation):
-        base = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
-        self.alphabet = translation
-        self.lookup = dict(zip(base, translation))
-        self.revlookup = dict(zip(translation, base))
+        base = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".encode("utf-8")
+        self.__alphabet = translation
+        self.__lookup = dict(zip(base, translation))
+        self.__revlookup = dict(zip(translation, base))
 
     def description(self):
         return """
         Crypo invented some fancy names for Base-64 encodings that simply use a different alphabet than the original Base-64 algorithm.
         We reverse engineered the site to find out the actual alphabets.
 
-        This Base-64 variant has the alphabet: """ + self.alphabet + "\n\nDeque, Ex094\n"
+        This Base-64 variant has the alphabet: """ + self.__alphabet + "\n\nDeque, Ex094\n"
 
     def encode(self, text):
-        global lookup
-        b64 = base64.b64encode(text)
-        result = "".join([self.lookup[x] for x in b64])
+        """
+        Encodes the `text` that was passed as parameter for a given
+        Base64 variant encoding.
+
+        :rtype : str
+        :param text: The string value that is to be encoded.
+        :return: Returns the encoded text.
+        """
+        b64 = b64encode(text)
+        result = "".join([self.__lookup[x] for x in b64])
         return result
 
     def decode(self, code):
-        global revlookup
-        b64 = "".join([self.revlookup[x] for x in code])
-        result = base64.b64decode(b64)
+        """
+        Decodes the `code` that as passed as parameter for a given
+        Base64 variant encoding.
+
+        :rtype : str
+        :param text: The string value that is to be decoded.
+        :return: returns the plaintext after decoding.
+        """
+        b64 = "".join([self.__revlookup[x] for x in code])
+        result = b64decode(b64)
         return result
 
 gila7 = B64VariantEncoder("7ZSTJK+W=cVtBCasyf0gzA8uvwDEq3XH/1RMNOILPQU4klm65YbdeFrx2hij9nopG")
