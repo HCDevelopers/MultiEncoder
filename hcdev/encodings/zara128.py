@@ -5,9 +5,7 @@
 # Author: Animesh Shaw
 
 
-# noinspection PyTypeChecker
 class HCPyEncoder:
-
     def __init__(self):
         self.__PAD = 312
 
@@ -29,5 +27,6 @@ class HCPyEncoder:
     Plaintext  : Psycho_Coder
     Ciphertext: 392 427 433 411 416 423 407 379 423 412 413 426
             """
+
 
 zara128 = HCPyEncoder()
