@@ -15,7 +15,7 @@ class B64VariantEncoder:
         Crypo invented some fancy names for Base-64 encodings that simply use a different alphabet than the original Base-64 algorithm.
         We reverse engineered the site to find out the actual alphabets.
 
-        This Base-64 variant has the alphabet: """ + self.alphabet + "\n\nDeque\n"
+        This Base-64 variant has the alphabet: """ + self.alphabet + "\n\nDeque, Ex094\n"
 
     def encode(self, text):
         global lookup
