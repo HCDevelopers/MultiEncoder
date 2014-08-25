@@ -1,19 +1,34 @@
 #!/usr/bin/env python2.7
+# coding=utf-8
 #
 # ZARA-128 Encoding Algorithm implementation.
 #
 # Author: Animesh Shaw
 
 
+from random import Random
+from string import ascii_letters, digits
+
+
 class HCPyEncoder:
     def __init__(self):
-        self.__PAD = 312
+        self.__DEFAULT_KEY_VAL = 312
+        self.__PAD = 0
+        self.__key_val = lambda key: sum([ord(c) for c in key]) \
+            if key.strip() != "" else self.__DEFAULT_KEY_VAL
 
-    def encode(self, plaintext):
+    def encode(self, plaintext, key=""):
+        self.__PAD = self.__key_val(key)
         return " ".join(str(ord(c) + self.__PAD) for c in plaintext)
 
-    def decode(self, ciphertext):
+    def decode(self, ciphertext, key=""):
+        self.__PAD = self.__key_val(key)
         return "".join(chr(int(c) - self.__PAD) for c in ciphertext.split())
+
+    @staticmethod
+    def generate_key(keylen=10):
+        pad = ascii_letters + digits
+        return ''.join(Random().sample(pad, keylen))
 
     @staticmethod
     def description():
