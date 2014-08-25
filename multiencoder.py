@@ -9,7 +9,6 @@
 
 
 # Encryptions
-
 from hcdev.encryptions.vigenere import vigenere
 from hcdev.encryptions.xor import xor
 from hcdev.encryptions.shiftcipher import shiftcipher
@@ -32,7 +31,8 @@ encrypters = {
     'gronsfeld': gronsfeld(),
     'shiftcipher': shiftcipher,
     'vigenere': vigenere(),
-    'xor': xor
+    'xor': xor,
+    'zara128': zara128
 }
 
 encoders = {
@@ -45,7 +45,6 @@ encoders = {
     'morse': morse,
     'megan35': megan35,
     'atom128': atom128,
-    'zara128': zara128,
     'zong22': zong22,
     'gila7': gila7,
     'tripo5': tripo5,
@@ -119,8 +118,7 @@ def print_description(algorithm):
         elif alg in encrypters:
             enc = encrypters[alg]
         if hasattr(enc, "description"):
-            print
-            print "-----------------------------------------------------------"
+            print "\n-----------------------------------------------------------"
             print enc.description()
             print "-----------------------------------------------------------"
         else:
