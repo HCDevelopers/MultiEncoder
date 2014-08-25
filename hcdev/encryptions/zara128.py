@@ -43,4 +43,5 @@ class HCPyEncoder:
     Ciphertext: 392 427 433 411 416 423 407 379 423 412 413 426
             """
 
+
 zara128 = HCPyEncoder()

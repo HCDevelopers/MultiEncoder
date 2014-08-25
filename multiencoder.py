@@ -9,6 +9,7 @@
 
 
 # Encryptions
+from hcdev.encryptions.zara128 import zara128
 from hcdev.encryptions.vigenere import vigenere
 from hcdev.encryptions.xor import xor
 from hcdev.encryptions.shiftcipher import shiftcipher
@@ -24,7 +25,6 @@ from hcdev.encodings.binary import binary
 from hcdev.encodings.morse import morse
 from hcdev.encodings.b64variant import *
 from hcdev.encodings.rot import *
-from hcdev.encodings.zara128 import zara128
 
 
 encrypters = {
