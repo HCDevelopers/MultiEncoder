@@ -35,12 +35,22 @@ class HCPyEncoder:
         return """
     Description :-
     ---------------
-    ZARA-128 is a very simple example of String encoding where each character in the string is converted
-    to ASCII value and then 312 is add to it along with a space to distinguish between the characters.
+    ZARA-128 is a very simple example of String encryption where the user
+    either generates a key or uses the default key len of 312. The Key given
+    by the user is changed to integer by summation of ASCII value of each character
+    in the key. If no Key is Supplied we use a default key of length 312.
 
-    Example:
-    Plaintext  : Psycho_Coder
-    Ciphertext: 392 427 433 411 416 423 407 379 423 412 413 426
+    Example Run :-
+
+    Encodings/encryptions (type "-i name" to get a description): zara
+    Encode (e) or decode (d)? e
+    Text: Hello
+
+    Key for zara128 (type "-gen" to generate): -gen
+    Generated key: oFlS3muQnX
+    > zara128: 1000 1029 1036 1036 1039
+
+    Result: 1000 1029 1036 1036 1039
             """
 
 
