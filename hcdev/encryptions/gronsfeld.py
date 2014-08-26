@@ -1,65 +1,57 @@
-from vigenere import vigenere
+# Coded by Ex094
 
-class gronsfeld(vigenere):
 
-    global chars
+class gronsfeld:
+    __alpha = ""
 
-    chars = '''ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'''
+    def __init__(self):
+        self.__alpha = """ABCDEFGHIJKLMNOPQRSTUVWXYZ"""
 
-    def encode(self, text, key):
-        text = text.upper()
-        enc = ''
-        key = self.adjust_key(key, len(text))
+    def encode(self, plain, key):
+        plain = plain.upper()
+        enc = ""
 
-        for x in range(len(text)):
-            ch = text[x]
-            if ch.isalpha():
-                a,b = ch, key[x]
-                get = chars.index(a) + int(b)
-                enc += chars[get]
-            else: enc += ch
+        for ch in plain:
+            if (ch not in self.__alpha) or (ch == " "):
+                enc += ch
+            else:
+                get = ((self.__alpha.index(ch) + int(key)) % 26)
+                enc += self.__alpha[get]     
+            
         return enc
 
-    def decode(self, text, key):
-        text.upper()    
-        dec = ''
-        key = self.adjust_key(key, len(text))
+    def decode(self, msg, key):
+        msg = msg.upper()
+        dec = ""
 
-        for x in range(len(text)):
-            ch = text[x]    
-            if ch.isalpha():
-                a,b = ch, key[x]
-                get = chars.index(a) - int(b)   
-                dec += chars[get]
-            else: dec += ch
-        return dec
+        for ch in msg:
+            if (ch not in self.__alpha) or (ch == " "):
+                dec += ch
+            else:
+                get = self.__alpha.index(ch) - int(key)
+                dec += self.__alpha[get]
 
-    def description(self):
+        return dec.lower()
 
-        return '''
-This cipher is similar in working to the Vigenere Cipher but the difference
-lies in the usage of the characters it uses. Vigenere Cipher used alphabets
-where as in Gronsfeld Cipher we use a fixed numeric Key to encode the plain
-text. The general forumla for encoding is:
-                     
-          Encode Char = (Key + Index of the each char in Plain text)
+    @staticmethod
+    def description():
 
-For example:
-
-Plain text = 'Hackcommnity'
-Cipher Key = '4'
-
-Now what it does is simply take the index of the chars and add it to the cipher
-key resulting in a new number which is the index of the new encoded char
-
-So for encoding H with the key cipher 4, We first take the index of H which is
-7. Apply the formula:
-
-                 Encode Char = (4 + 7) = 11
-
-11 is the index number of L so the new word for H will be L
-
-Decoding is heck easy too, You just need to know the key that's all and then
-instead of adding, subtract it from the char index and you'll get the actual
-char.
-''' 
+        return """
+Coded By Ex094 in Python
+  
+In this cipher, 2 things are required for encoding
+1) A Plain text
+2) A key
+  
+Suppose the text is ATTACKBEFOREDAWN
+And the key is      ORANGEORANGEORAN
+  
+In order to encode this, the formulae involved is:
+              Char = (plaintext self.__alphabet + key self.__alphabet)
+  
+To encode T with R, We get: char = (20 + 18) = 38 which is K
+  
+So the new letter for T and R will be K
+  
+For decoding, Simply we preform the subtraction of the key index with that of the encrypted cipher.
+"""
