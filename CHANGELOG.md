@@ -1,3 +1,13 @@
+### Version 0.4
+    
+  * New Base64 variants : GILA7, TRIPO5, FERON-74, TIGO3, ESAB-46
+  * New Encryption : ZARA-128
+  * Vigenere, Gronsfeld, XOR encryptions were corrected.
+  * MultiEncoder UI was reformatted and changed. New Co-author : Psycho_Coder
+  * Python Package installation system now available. For installation 
+    a setup.py file has been added.
+  * All the algorithms were restructured properly.
+
 ### Version 0.3
 
   * new encodings: rot5, rot45, rot18
