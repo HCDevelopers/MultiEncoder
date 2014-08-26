@@ -3,6 +3,7 @@ class HCPyEncoder:
     Here we create a constructor and initialise the alphabets and substitution dictionary.
     This dictionary remains same for all types of plaintext given.
     """
+
     def __init__(self):
         self.alphabets = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*()_+|:"<>-=[];,.?'
         self.dictionary = '7D#+[~Zg%u<K8@]Jr Q4-j>dO^:aU,&!AC2xVy(Y;Gzp|LbSMqB*WT0fEls$PXi)cN6RoF3mHn9e_.1"vt=?wI5hk'
@@ -24,5 +25,6 @@ class HCPyEncoder:
         for c in cipher:
             plain += self.alphabets[self.dictionary.index(c)]
         return plain
+
 
 psychosub = HCPyEncoder()

@@ -34,3 +34,6 @@ class leet:
 
             To avoid messing up cases and to allow this algorithm to be used combined with other case-sensitive encodings, only lowercase characters, numbers and the |, <, > and G characters are translated (G is the only uppercase character that is translated).
         '''
+
+
+leet = leet()
