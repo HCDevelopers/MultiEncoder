@@ -1,14 +1,17 @@
-#Author: Psycho_Coder
-#
+# Author: Psycho_Coder
 
 import binascii
 
-class HCPyEncoder:
 
-    def encode(self,plaintext):        
+class HCPyEncoder:
+    def __init__(self):
+        pass
+
+    def encode(self, plaintext):
         return binascii.hexlify(plaintext)
-    
-    def decode(self,ciphertext):
+
+    def decode(self, ciphertext):
         return binascii.unhexlify(ciphertext)
+
 
 hex = HCPyEncoder()
