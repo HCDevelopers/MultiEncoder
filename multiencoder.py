@@ -112,16 +112,29 @@ def clean_list(dirtylist):
 
         if element in encoders or element in encrypters:
             cleanlist.append(element)
+        # one element couldn't be found, so return empty list
         else:
-            print("\n Couldn't find " + element)
+            print("\ncouldn't find " + element)
+            return []
     return cleanlist
 
+def ask_is_decode():
+    # ask user until appropriate answer was given
+    while True:
+        user_input = raw_input("Encode (e) or decode (d)?")
+        if user_input == "d" or user_input == "D":
+            return true
+        if user_input == "e" or user_input == "E":
+            return false
+        print("\nCan not recognize your input " + user_input)
 
 def main():
     print title
     print_algorithms()
     algorithms = get_algorithms()
-    is_decode = True if raw_input("Encode (e) or decode (d)? ") == "d" else False
+    while algorithms == []:
+        algorithms = get_algorithms()
+    is_decode = ask_is_decode()
     text = raw_input("Text: ")
     en_de_code(is_decode, text, algorithms)
 
