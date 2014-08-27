@@ -143,6 +143,7 @@ def clean_list(dirtylist):
             return []
     return cleanlist
 
+
 def ask_is_decode():
     """Ask user if he/she wants to decode or encode until appropriate answer
        was given
@@ -155,11 +156,12 @@ def ask_is_decode():
             return False
         print("\nCan not recognize your input " + user_input)
 
+
 def main():
     print title
     print_algorithms()
     algorithms = get_algorithms()
-    while algorithms == []:
+    while not algorithms:
         algorithms = get_algorithms()
     is_decode = ask_is_decode()
     text = raw_input("Text: ")
