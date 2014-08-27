@@ -28,7 +28,10 @@ title = """
 
 
 def get_algorithms():
-
+    """Asks the user for the encoding and encryption algorithms that shall be
+       used to encode or decode some text.
+       Returns a list of the encoders and encrypters the user wants to apply.
+    """
     userargs = []
     while True:
         userin = raw_input("Encodings/encryptions (type '-i algo-name' to get a description): ")
@@ -41,7 +44,10 @@ def get_algorithms():
 
 
 def print_description(algorithm):
-
+    """Prints a description of the given algorithm
+       The algorithm instance must have the attribute description, otherwise
+       it prints that no description is available.
+    """
     enc = None
     alglist = clean_list([algorithm])
     if len(alglist) == 1:
@@ -60,6 +66,9 @@ def print_description(algorithm):
 
 
 def print_algorithms():
+    """Prints a list of all available encoders and encrypters, including a (-i)
+       if a description is available
+    """
     print("Available encodings:\n"),
     for algo in encoders.keys():
         print(algo),
@@ -74,6 +83,11 @@ def print_algorithms():
 
 
 def en_de_code(is_decode, text, algorithms):
+    """Takes a list of algorithms and performs encoding or decoding on the given
+       text, depending on the is_decode argument.
+       The encoding or decoding is performed in the order the algorithms are given.
+       Intermediate results and end result are printed.
+    """
     print
 
     for alg in algorithms:
@@ -91,6 +105,10 @@ def en_de_code(is_decode, text, algorithms):
 
 
 def ask_for_key(algorithm, gen):
+    """Asks the user to input or generate a key.
+
+       Returns the key.
+    """
     if hasattr(gen, "generate_key"):
         print "Key for", algorithm, "(type '-gen' to generate):",
         key = raw_input()
@@ -104,6 +122,13 @@ def ask_for_key(algorithm, gen):
 
 
 def clean_list(dirtylist):
+    """Takes a list of algorithm names as the user put them in.
+       Turns abbreviations in to their non-abbreviated form.
+
+       Returns a list of the corresponding encoders or encrypters in the same
+       order as given in the input list.
+       Returns an empty list if any of the input elements is invalid (not found).
+    """
     cleanlist = []
     for element in dirtylist:
 
@@ -120,7 +145,9 @@ def clean_list(dirtylist):
 
 
 def ask_is_decode():
-    # ask user until appropriate answer was given
+    """Ask user if he/she wants to decode or encode until appropriate answer
+       was given
+    """
     while True:
         user_input = raw_input("Encode (e) or decode (d)?")
         if user_input == "d" or user_input == "D":
