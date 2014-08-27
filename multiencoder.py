@@ -150,9 +150,9 @@ def ask_is_decode():
     while True:
         user_input = raw_input("Encode (e) or decode (d)?")
         if user_input == "d" or user_input == "D":
-            return true
+            return True
         if user_input == "e" or user_input == "E":
-            return false
+            return False
         print("\nCan not recognize your input " + user_input)
 
 def main():
