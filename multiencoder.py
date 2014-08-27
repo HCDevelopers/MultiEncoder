@@ -8,6 +8,7 @@
 # For license information, see LICENSE
 
 import hcdev
+import sys
 
 encrypters = hcdev.get_encryptors()
 encoders = hcdev.get_encoders()
@@ -160,12 +161,19 @@ def ask_is_decode():
 def main():
     print title
     print_algorithms()
+    # ask for algorithms until the user gets it right
     algorithms = get_algorithms()
     while not algorithms:
         algorithms = get_algorithms()
+    # ask if decode or encode
     is_decode = ask_is_decode()
+    # ask for text to decode or encode
     text = raw_input("Text: ")
-    en_de_code(is_decode, text, algorithms)
+    # apply encoding or decoding to text
+    try:
+        en_de_code(is_decode, text, algorithms)
+    except hcdev.EncodeInputError as e:
+        sys.stderr.write("Input Error! " + e.msg + "\n")
 
 if __name__ == "__main__":
     main()

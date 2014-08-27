@@ -1,3 +1,5 @@
+from hcdev.exception import EncodeInputError
+
 from hcdev.encryptions.zara128 import zara128
 from hcdev.encryptions.vigenere import vigenere
 from hcdev.encryptions.xor import xor
